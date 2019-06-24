@@ -36,8 +36,9 @@ while [[ $# > 0 ]]; do
             LOSS=$2
             shift
             ;;
-        --tracE)
+        --trace)
             TRACE="-trace_err -trace_msg"
+            ;;
         *)
             SCENARIO=$1
             ;;

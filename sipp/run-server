@@ -41,6 +41,7 @@ while [[ $# > 0 ]]; do
             ;;
         --trace)
             TRACE="-trace_err -trace_msg"
+            ;;
         *)
             SCENARIO=$1
             ;;
