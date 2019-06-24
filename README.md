@@ -16,15 +16,16 @@ Use `PUT /settings` to change log settings. The following properties exists:
 | `showHeaders` | Boolean | If `true`, headers are listed.          |
 | `pretty`      | Boolean | If `true`, output is pretty             |
 
-### Preset BXML
+### BXML
 
-Use either GET or POST on these endpoints for some preset BXMLs.
+All files under `/bxml` are served using the same path as URL and any method. For example: `GET /bxml/say-hello`.
+Below are some default BXML.
 
-#### `/preset/say-hello`
+#### `/bxml/say-hello`
 
 Says hello.
 
-#### `/preset/speak`
+#### `/bxml/speak`
 
 Speaks a sentence.
 
@@ -33,7 +34,7 @@ Speaks a sentence.
 | `sentence` | String | The sentence to speak. |
 | `voice`    | String | The voice.             |
 
-#### `/preset/gather`
+#### `/bxml/gather`
 
 Gathers digits. The callback is [speak digits](#presetspeak-digits).
 
@@ -42,19 +43,19 @@ Gathers digits. The callback is [speak digits](#presetspeak-digits).
 | `maxDigits`         | Integer | Gather max digits.         |
 | `terminatingDigits` | String  | Gather terminating digits. |
 
-#### `/preset/speak-digits
+#### `/bxml/speak-digits
 
 Speaks the values of `body.digits` and `body.terminatingDigit`. Intended to reply to a gather event.
 
-#### `/preset/play-audio`
+#### `/bxml/play-audio`
 
 Plays a 5 second audio from the lab box.
 
-#### `/preset/play-long-audio`
+#### `/bxml/play-long-audio`
 
 Plays a 3 minute audio from the lab box.
 
-#### `/preset/transfer`
+#### `/bxml/transfer`
 
 Transfers to a phone number. Complete and answer callbacks are `speak` with pre-defined sentences.
 
