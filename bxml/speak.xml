@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<Response>
+    <SpeakSentence voice="${query.voice:susan}">
+        ${query.sentence}
+    </SpeakSentence>
+</Response>

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+function usage() {
+    echo "Run SIPp in UAC mode.
+    
+    ./run-client <scenario> <options>
+
+    Options:
+
+    -t, --target    <host:port>     (Required) Target SIP endpoint.
+    -a, --appid     <ID>            (Required) Slingshot application ID to lookup.
+    -r, --cps       <rate>          (Required) Calls per second.
+    --loss          <rate>          Enable packet loss in %.
+    --trace                         Enable error and message tracing.
+"
+}
+
+LOSS=0
+TRACE=""
+
+while [[ $# > 0 ]]; do
+    case "$1" in
+        -t | --target)
+            TARGET=$2
+            shift
+            ;;
+        -a | --appid)
+            APPID=$2
+            shift
+            ;;
+        -r | --cps)
+            CPS=$2
+            shift
+            ;;
+        --loss)
+            LOSS=$2
+            shift
+            ;;
+        --tracE)
+            TRACE="-trace_err -trace_msg"
+        *)
+            SCENARIO=$1
+            ;;
+    esac
+    shift
+done
+
+if [ -z "$SCENARIO" ] | [ -z "$TARGET" ] | [ -z "$APPID" ] | [ -z "$CPS" ]; then
+    usage
+    exit 1
+fi
+
+sipp -sf $SCENARIO \
+    -r $CPS -l 1000 \
+    -set APP_ID $APPID \
+    -lost $LOSS \
+    $TRACE \
+    $TARGET

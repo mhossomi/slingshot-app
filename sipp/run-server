@@ -1,0 +1,61 @@
+#!/bin/bash
+
+function usage() {
+    echo "Run SIPp in UAS mode.
+
+    ./run-server <scenario> <options>
+
+    Options:
+
+    -i, --ip    <value>         Local IP address. Default is 127.0.0.1.
+    -p, --port  <value>         Local port. Default is 5111.
+    -v, --var   <key> <value>   Set scenario global variable value.
+    --loss      <value>         Enable packet loss in %.
+    --trace                     Enable error and message tracing.
+"
+}
+
+IP=127.0.0.1
+PORT=5111
+LOSS=0
+TRACE=""
+
+while [[ $# > 0 ]]; do
+    case "$1" in
+        -i | --ip)
+            IP=$2
+            shift
+            ;;
+        -p | --port)
+            PORT=$2
+            shift
+            ;;
+        -v | --var)
+            VARS="$VARS -s $2 $3"
+            shift
+            shift
+            ;;
+        --loss)
+            LOSS=$2
+            shift
+            ;;
+        --trace)
+            TRACE="-trace_err -trace_msg"
+        *)
+            SCENARIO=$1
+            ;;
+    esac
+    shift
+done
+
+if [ -z "$SCENARIO" ]; then
+    usage
+    exit 1
+fi
+
+sipp -sf $SCENARIO \
+    -i $IP -p $PORT \
+    -l 1000 \
+    -lost $LOSS \
+    $TRACE \
+    $VARS

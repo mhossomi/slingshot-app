@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="Slingshot: Single Answer and Hangup">
+
+
+  <!-- Branch: to answer or not to answer... -->
+  <recv request="INVITE" next="on_dont_answer" test="DONT_ANSWER">
+    <action>
+      <ereg assign_to="REMOTE" regexp=".*" search_in="hdr" header="From:" check_it="true" />
+      <ereg assign_to="LOCAL" regexp=".*" search_in="hdr" header="To:" check_it="true" />
+      <ereg assign_to="CONTACT_REMOTE" regexp="sip:[:A-Za-z@0-9.]*" search_in="hdr" header="Contact:" check_it="true" />
+      <assignstr assign_to="CONTACT_LOCAL" value="<sip:[local_ip]:[local_port];transport=[transport]>" />
+      <assignstr assign_to="VIA_LOCAL" value="SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]" />
+
+      <!-- Append local tag -->
+      <assignstr assign_to="LOCAL" value="[$LOCAL];tag=SIPP[pid][call_number]" />
+
+      <!-- Answer only calls to +15554442110 -->
+      <ereg assign_to="LOCAL_NUMBER" regexp="\+[0-9]+" seearch_in="var" variable="LOCAL" check_it="true"/>
+      <strcmp assign_to="DONT_ANSWER" variable="LOCAL_NUMBER" value="+15554442110"/>
+    </action>
+  </recv>
+
+  <!-- Branch: do answer -->
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      From: [$REMOTE]
+      To: [$LOCAL]
+      Call-ID: [call_id]
+      [last_CSeq:]
+      Contact: [$CONTACT_LOCAL]
+      X-Customer-Proto: HTTP
+      Content-Length: [len]
+      Content-Type: application/sdp
+
+      v=0
+      o=Sonus_UAC 846185 347560 IN IP4 192.168.102.11
+      s=SIP Media Capabilities
+      c=IN IP4 192.168.102.4
+      t=0 0
+      m=audio 49786 RTP/AVP 0 101
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-15
+      a=sendrecv
+      a=ptime:20
+
+    ]]>
+  </send>
+  <recv request="ACK" />
+
+  <!-- Reinvite -->
+  <recv request="INVITE"/>
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      From: [$REMOTE]
+      To: [$LOCAL]
+      Call-ID: [call_id]
+      [last_CSeq:]
+      Contact: [$CONTACT_LOCAL]
+      X-Customer-Proto: HTTP
+      Content-Length: [len]
+      Content-Type: application/sdp
+
+      v=0
+      o=Sonus_UAC 846185 347560 IN IP4 192.168.102.11
+      s=SIP Media Capabilities
+      c=IN IP4 192.168.102.4
+      t=0 0
+      m=audio 49786 RTP/AVP 0 101
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-15
+      a=sendrecv
+      a=ptime:20
+
+    ]]>
+  </send>
+  <recv request="ACK"/>
+
+  <!-- Wait -->
+  <pause milliseconds="100"/>
+
+  <!-- Hangup -->
+  <send>
+    <![CDATA[
+
+      BYE [$CONTACT_REMOTE] SIP/2.0
+      Via: [$VIA_LOCAL]
+      From: [$LOCAL]
+      To: [$REMOTE]
+      Call-ID: [call_id]
+      CSeq: [cseq] BYE
+      Contact: [$CONTACT_LOCAL]
+      Max-Forwards: 70
+      Content-Length: 0
+
+    ]]>
+  </send>
+  <recv response="200" next="finish"/>
+
+  <!-- Branch: don't answer -->
+  <label id="on_dont_answer"/>
+
+  <send>
+    <![CDATA[
+
+      SIP/2.0 100 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      Call-ID: [call_id]
+      [last_CSeq:]
+      Contact: [$CONTACT_LOCAL]
+      X-Customer-Proto: HTTP
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv request="CANCEL"/>
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: [$CONTACT_LOCAL]
+      X-Customer-Proto: HTTP
+      Content-Length: [len]
+      Content-Type: application/sdp
+
+      v=0
+      o=Sonus_UAC 846185 347560 IN IP4 192.168.102.11
+      s=SIP Media Capabilities
+      c=IN IP4 192.168.102.4
+      t=0 0
+      m=audio 49786 RTP/AVP 0 101
+      a=rtpmap:0 PCMU/8000
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-15
+      a=sendrecv
+      a=ptime:20
+
+    ]]>
+  </send>
+
+  <label id="finish"/>
+
+  <!-- Tables -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+  <CallLengthRepartition value="1000, 9000, 10000, 11000"/>
+
+</scenario>
+

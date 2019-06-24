@@ -1,0 +1,16 @@
+{
+  "name": "slingshot-app-log",
+  "version": "1.0.0",
+  "description": "A Bandwidth Slingshot logger application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "mhossomi@daitan.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "node-fetch": "^2.6.0"
+  }
+}
