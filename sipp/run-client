@@ -10,13 +10,15 @@ function usage() {
     -t, --target    <host:port>     (Required) Target SIP endpoint.
     -a, --appid     <ID>            (Required) Slingshot application ID to lookup.
     -r, --cps       <rate>          (Required) Calls per second.
+    -m, --max       <max>           Max calls to make before exiting. Default is 10000.
     --loss          <rate>          Enable packet loss in %.
     --trace                         Enable error and message tracing.
 "
 }
 
 LOSS=0
-TRACE=""
+MAX=10000
+TRACE="-trace_screen"
 
 while [[ $# > 0 ]]; do
     case "$1" in
@@ -32,12 +34,16 @@ while [[ $# > 0 ]]; do
             CPS=$2
             shift
             ;;
+        -m | --max)
+            MAX=$2
+            shift
+            ;;
         --loss)
             LOSS=$2
             shift
             ;;
         --trace)
-            TRACE="-trace_err -trace_msg"
+            TRACE="-trace_screen -trace_err -trace_msg"
             ;;
         *)
             SCENARIO=$1
@@ -52,8 +58,9 @@ if [ -z "$SCENARIO" ] | [ -z "$TARGET" ] | [ -z "$APPID" ] | [ -z "$CPS" ]; then
 fi
 
 sipp -sf $SCENARIO \
-    -r $CPS -l 1000 \
     -set APP_ID $APPID \
+    -r $CPS -m $MAX -l 10000 \
     -lost $LOSS \
+    -default_behaviors abortunexp,-bye \
     $TRACE \
     $TARGET

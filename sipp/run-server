@@ -18,7 +18,7 @@ function usage() {
 IP=127.0.0.1
 PORT=5111
 LOSS=0
-TRACE=""
+TRACE="-trace_screen"
 
 while [[ $# > 0 ]]; do
     case "$1" in
@@ -40,7 +40,7 @@ while [[ $# > 0 ]]; do
             shift
             ;;
         --trace)
-            TRACE="-trace_err -trace_msg"
+            TRACE="-trace_screen -trace_err -trace_msg"
             ;;
         *)
             SCENARIO=$1
@@ -56,7 +56,8 @@ fi
 
 sipp -sf $SCENARIO \
     -i $IP -p $PORT \
-    -l 1000 \
+    -l 10000 \
     -lost $LOSS \
+    -default_behaviors abortunexp,-bye \
     $TRACE \
     $VARS
