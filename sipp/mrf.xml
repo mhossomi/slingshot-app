@@ -196,6 +196,20 @@
   <!-- Branch: hangup -->
   <label id="on_hangup" />
 
+  <send>
+    <![CDATA[
+
+      SIP/2.0 200 OK
+      [last_Via:]
+      [last_From:]
+      [last_To:]
+      [last_Call-ID:]
+      [last_CSeq:]
+      Contact: [$CONTACT_LOCAL]
+      Content-Length: 0
+    ]]>
+  </send>
+
   <!-- Keep the call open for a while in case the 200 is lost to be     -->
   <!-- able to retransmit it if we receive the BYE again.               -->
   <pause milliseconds="4000" hide="true" />
