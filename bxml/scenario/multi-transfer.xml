@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <Response>
-    <Transfer transferCompleteUrl="${env.HTTP_SELF}/preset/speak?sentence=Transfer+completed!">
-        <PhoneNumber transferAnswerUrl="${env.HTTP_SELF}/preset/speak?sentence=Hello,+world!">
-            ${query.to}
-        </PhoneNumber>
+    <Transfer>
+        <PhoneNumber>+15554442110</PhoneNumber>
+        <PhoneNumber>+15554442111</PhoneNumber>
+        <PhoneNumber>+15554442112</PhoneNumber>
     </Transfer>
 </Response>
