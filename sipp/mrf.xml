@@ -102,7 +102,7 @@
     ]]>
   </send>
 
-  <pause milliseconds="100">
+  <pause milliseconds="100"/>
   <nop next="on_play" test="DO_PLAY"/>
   <nop next="on_gather" test="DO_GATHER"/>
   <nop next="on_dtmf" test="DO_DTMF"/>
