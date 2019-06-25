@@ -61,6 +61,6 @@ sipp -sf $SCENARIO \
     -set APP_ID $APPID \
     -r $CPS -m $MAX -l 10000 \
     -lost $LOSS \
-    -default_behaviors abortunexp,-bye \
+    -recv_timeout 5000 \
     $TRACE \
     $TARGET

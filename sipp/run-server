@@ -58,6 +58,5 @@ sipp -sf $SCENARIO \
     -i $IP -p $PORT \
     -l 10000 \
     -lost $LOSS \
-    -default_behaviors abortunexp,-bye \
     $TRACE \
     $VARS
