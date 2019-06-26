@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 
-<scenario name="Slingshot: Invite and Wait">
+<scenario name="Slingshot: Invite, Reinvite and Wait">
   <Global variables="APP_ID"/>
 
   <nop>

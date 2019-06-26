@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 
-<scenario name="Slingshot: Single Answer and Hangup">
-
+<scenario name="Slingshot: Answer One and Hangup">
 
   <!-- Branch: to answer or not to answer... -->
   <recv request="INVITE" next="on_dont_answer" test="DONT_ANSWER">

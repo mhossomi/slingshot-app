@@ -58,5 +58,6 @@ sipp -sf $SCENARIO \
     -i $IP -p $PORT \
     -l 10000 \
     -lost $LOSS \
+    -recv_timeout 10000 \
     $TRACE \
     $VARS

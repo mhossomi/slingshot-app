@@ -3,8 +3,9 @@
 
 <!--
   Scenario file to simulate the MRF. Supports:
-  - Play audio (1s duration, signaling only)
-  - Gather (1s duration, always 123#)
+  - Play audio (100ms duration, signaling only)
+  - Gather (100ms duration, always 123#)
+  - DTMF (100ms duration)
 -->
 
 <scenario name="Slingshot: MRF Play Audio">
