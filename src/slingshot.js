@@ -15,6 +15,7 @@ var settings = {
 // Register ngrok or Heroku urls if detected
 ngrok.getPublicUrls()
     .then(urls => urls || heroku.getPublicUrls())
+    .then(urls => urls || [])
     .then(urls => {
         console.log(`Found ${urls.length} URLs!`)
         urls.forEach(tunnel => process.env[`${tunnel.proto.toUpperCase()}_SELF`] = tunnel.public_url)
