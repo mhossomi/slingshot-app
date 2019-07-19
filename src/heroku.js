@@ -1,16 +1,13 @@
 const { execSync } = require('child_process')
 
 async function getPublicUrls() {
-    try {
-        console.log(process.env)
-        const info = JSON.parse(execSync('heroku info --json'))
+    if (process.env.HEROKU_APP_NAME) {
         console.log('Detected Heroku')
         return [
-            { proto: 'https', public_url: info.app.web_url }
+            { proto: 'https', public_url: `https://${process.env.HEROKU_APP_NAME}.herokuapp.com` }
         ]
-    } catch (e) {
-        return undefined
     }
+
 }
 
 module.exports = {
