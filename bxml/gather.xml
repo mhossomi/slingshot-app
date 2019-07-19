@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Response>
-    <Gather gatherUrl="${env.HTTP_SELF}/preset/speak-digits" maxDigits="${query.maxDigits:3}" terminatingDigits="${query.terminatingDigits:#}">
+    <Gather gatherUrl="${env.HTTP_SELF}/bxml/speak-digits" maxDigits="${query.maxDigits:3}" terminatingDigits="${query.terminatingDigits:#}">
         <SpeakSentence voice="susan">
             Please dial something.
         </SpeakSentence>

@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 
-async function getTunnels() {
+async function getPublicUrls() {
     try {
         const res = await fetch('http://localhost:4040/api/tunnels')
         console.log('Detected ngrok')
@@ -8,10 +8,10 @@ async function getTunnels() {
         return body.tunnels || []
     }
     catch (e) {
-        return []
+        return undefined
     }
 }
 
 module.exports = {
-    getTunnels
+    getPublicUrls
 }

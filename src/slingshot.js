@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const bxml = require('./bxml')
 const ngrok = require('./ngrok')
+const heroku = require('./heroku')
 
 // ==================================================
 
@@ -11,11 +12,13 @@ var settings = {
     pretty: true
 }
 
-// Register ngrok tunnels if detected
-ngrok.getTunnels().then(tunnels => {
-    console.log(`Found ${tunnels.length} ngrok tunnels!`)
-    tunnels.forEach(tunnel => process.env[`${tunnel.proto.toUpperCase()}_SELF`] = tunnel.public_url)
-})
+// Register ngrok or Heroku urls if detected
+ngrok.getPublicUrls()
+    .then(urls => urls || heroku.getPublicUrls())
+    .then(urls => {
+        console.log(`Found ${urls.length} URLs!`)
+        urls.forEach(tunnel => process.env[`${tunnel.proto.toUpperCase()}_SELF`] = tunnel.public_url)
+    })
 
 // ==================================================
 
@@ -57,6 +60,8 @@ function loggingHandler(req, res, next) {
 // ==================================================
 
 module.exports = (name, port, configurer) => {
+    process.env.HTTP_SELF = process.env.HTTP_SELF || `localhost:${port}`
+    process.env.HTTPS_SELF = process.env.HTTPS_SELF || `localhost:${port}`
     configurer(express()
         .use(bodyParser.json())
         .put('/settings', settingsHandler)

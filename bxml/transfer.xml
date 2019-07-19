@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
-    <Transfer transferCompleteUrl="${env.HTTP_SELF}/preset/speak?sentence=Transfer+completed!">
-        <PhoneNumber transferAnswerUrl="${env.HTTP_SELF}/preset/speak?sentence=Hello,+world!">
+    <Transfer>
+        <PhoneNumber transferAnswerUrl="${env.HTTP_SELF}/bxml/say-hello">
             ${query.to}
         </PhoneNumber>
     </Transfer>

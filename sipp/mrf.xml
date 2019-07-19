@@ -8,7 +8,7 @@
   - DTMF (100ms duration)
 -->
 
-<scenario name="Slingshot: MRF Play Audio">
+<scenario name="Slingshot: MRF">
 
   <recv request="INVITE">
     <action>
