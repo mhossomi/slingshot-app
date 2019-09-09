@@ -1,6 +1,6 @@
 const slingshot = require('./src/slingshot')
 const bxml = require('./src/bxml')
-const http = require('http')
+const https = require('https')
 
 slingshot('Slingshot App', process.env.PORT || 8110, app => app
     .use('/complete', (req, res) => {
