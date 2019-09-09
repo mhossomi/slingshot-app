@@ -6,10 +6,11 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
     .use('/complete', (req, res) => {
         console.log('Recording complete!')
 
-        https.get(
-            `https://voice-media-service-mhossomi-worker.apps.lab1.ocp.bandwidth.com/accounts/9902319\
-            /calls/${req.body.callId}/recordings/${req.body.recordingId}/mp3/mono`,
-            res => console.log('Recording post-process triggered!', res.statusCode))
+        const url = `https://voice-media-service-mhossomi-worker.apps.lab1.ocp.bandwidth.com/accounts/9902319\
+        /calls/${req.body.callId}/recordings/${req.body.recordingId}/mp3/mono`
+
+        console.log('Triggering post-process:', url)
+        https.get(url, res => console.log('Recording post-process triggered!', res.statusCode))
 
         res.send('<?xml version="1.0" ?>\
         <Response> \
@@ -20,4 +21,3 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
     })
     .use((req, res) => res.sendStatus(200)))
 
-    
