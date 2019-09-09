@@ -7,10 +7,10 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
         console.log('Recording complete!')
 
         https.get(
-            `http://voice-media-service-mhossomi-worker.apps.lab1.ocp.bandwidth.com/accounts/9902319\
+            `https://voice-media-service-mhossomi-worker.apps.lab1.ocp.bandwidth.com/accounts/9902319\
             /calls/${req.body.callId}/recordings/${req.body.recordingId}/mp3/mono`,
             res => console.log('Recording post-process triggered!', res.statusCode))
-            
+
         res.send('<?xml version="1.0" ?>\
         <Response> \
             <SpeakSentence voice="susan"> \
