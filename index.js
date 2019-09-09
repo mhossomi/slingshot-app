@@ -5,7 +5,7 @@ const https = require('https')
 slingshot('Slingshot App', process.env.PORT || 8110, app => app
     .use('/complete', (req, res) => {
         console.log('Recording complete!')
-        http.get(`${req.body.callUrl}/recordings/${req.body.recordingId}/mp3/mono`, res => {
+        https.get(`${req.body.callUrl}/recordings/${req.body.recordingId}/mp3/mono`, res => {
             console.log('Recording post-process triggered!', res.statusCode)
         })
         res.sendStatus(200)
