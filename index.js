@@ -3,21 +3,5 @@ const bxml = require('./src/bxml')
 const https = require('https')
 
 slingshot('Slingshot App', process.env.PORT || 8110, app => app
-    .use('/complete', (req, res) => {
-        console.log('Recording complete!')
-
-        const url = `https://voice-media-service-mhossomi-worker.apps.lab1.ocp.bandwidth.com/accounts/9902319/calls/${req.body.callId}/recordings/${req.body.recordingId}/mp3/mono`
-
-        console.log('Triggering post-process:', url)
-        https.get(url, res => console.log('Recording post-process triggered!', res.statusCode))
-        .on('error', error => console.log(error))
-
-        res.send('<?xml version="1.0" ?>\
-        <Response> \
-            <SpeakSentence voice="susan"> \
-                Thanks! \
-            </SpeakSentence> \
-        </Response>')
-    })
     .use((req, res) => res.sendStatus(200)))
 
