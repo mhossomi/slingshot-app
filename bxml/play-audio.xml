@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Response>
     <PlayAudio>
-        http://192.168.113.58/5sec-g711.wav
+        ${env.HTTP_SELF}/audio/${query.audio:5sec-g711.wav}
    </PlayAudio>
 </Response>
