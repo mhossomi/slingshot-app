@@ -28,6 +28,7 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
                     + '</Response>')
             })
         })
+	.on('error', e => console.log(e))
     })
     .use((req, res) => res.sendStatus(200)))
 
