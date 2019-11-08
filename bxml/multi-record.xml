@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<Response>
+    <StartRecording recordingAvailableUrl="/recordingAvailable" />
+    <SpeakSentence voice="susan">
+        This call is being recorded.
+    </SpeakSentence>
+    <PauseRecording />
+    <SpeakSentence voice="susan">
+        Now it isn't.
+    </SpeakSentence>
+    <ResumeRecording />
+    <SpeakSentence voice="susan">
+        Now it is again.
+    </SpeakSentence>
+    <StopRecording />
+</Response>
