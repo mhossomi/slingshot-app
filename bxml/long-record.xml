@@ -4,13 +4,16 @@
     <SpeakSentence voice="susan">
         This call is being recorded.
     </SpeakSentence>
+    <Pause duration="3" />
     <PauseRecording />
     <SpeakSentence voice="susan">
         Now it isn't.
     </SpeakSentence>
+    <Pause duration="3" />
     <ResumeRecording />
     <SpeakSentence voice="susan">
         Now it is again.
     </SpeakSentence>
+    <Pause duration="3" />
     <StopRecording />
 </Response>
