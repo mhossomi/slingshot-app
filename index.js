@@ -15,8 +15,8 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
 
         console.log('Downloading:', url)
         const file = fs.createWriteStream('./audio/recording')
-        https.get({ url, headers: { authorization } }, (res) => {
-            res.pipe(file);
+        https.get(url, { headers: { authorization } }, (mediaRes) => {
+            mediaRes.pipe(file);
             file.on('finish', () => {
                 console.log('Done')
                 file.close()
