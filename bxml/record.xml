@@ -3,8 +3,7 @@
     <SpeakSentence voice="susan">
         Say something!
     </SpeakSentence>
-    <Record maxDuration="${query.duration:5}" recordCompleteUrl="${env.HTTP_SELF}/bxml/speak?sentence=Thanks"/>
-    <SpeakSentence voice="susan">
-        Thank you!
-    </SpeakSentence>
+    <Record maxDuration="${query.duration:5}" 
+        recordCompleteUrl="/bxml/speak?sentence=Thanks" 
+        recordingAvailableUrl="/recordingAvailable"/>
 </Response>

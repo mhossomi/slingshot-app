@@ -9,10 +9,10 @@
     <SpeakSentence voice="susan">
         Now it isn't.
     </SpeakSentence>
-    <Pause duration="3" />
+    <Pause duration="1" />
     <ResumeRecording />
     <SpeakSentence voice="susan">
-        Now it is again.
+        Now it is again. Bye!
     </SpeakSentence>
     <Pause duration="1" />
     <StopRecording />
