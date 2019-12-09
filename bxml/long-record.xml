@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <Response>
-    <StartRecording recordingAvailableUrl="/recordingAvailable" />
+    <StartRecording 
+        recordingAvailableUrl="/recordingAvailable"
+        transcribe="${query.transcribe:false}" />
     <SpeakSentence voice="susan">
         This call is being recorded.
     </SpeakSentence>
