@@ -6,5 +6,6 @@
     <Record maxDuration="${query.duration:5}" 
         transcribe="${query.transcribe:false}"
         recordCompleteUrl="/bxml/speak?sentence=Thanks" 
-        recordingAvailableUrl="/recordingAvailable"/>
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/recordingAvailable"/>
 </Response>
