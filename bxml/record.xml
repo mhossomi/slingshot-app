@@ -7,5 +7,5 @@
         transcribe="${query.transcribe:false}"
         recordCompleteUrl="/bxml/speak?sentence=Thanks" 
         recordingAvailableUrl="/recordingAvailable"
-        transcriptionAvailableUrl="/recordingAvailable"/>
+        transcriptionAvailableUrl="/transcriptionAvailable"/>
 </Response>

@@ -2,7 +2,7 @@
 <Response>
     <StartRecording 
         recordingAvailableUrl="/recordingAvailable"
-        transcriptionAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable"
         transcribe="${query.transcribe:false}" />
     <SpeakSentence voice="susan">
         This call is being recorded.
