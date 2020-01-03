@@ -1,8 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
     <Transfer>
-        <PhoneNumber transferAnswerUrl="/bxml/say-hello">
-            ${query.to}
-        </PhoneNumber>
+        <PhoneNumber transferAnswerUrl="/bxml/say-hello",
+            transferDisconnectUrl="/transferDisconnect">${query.to}</PhoneNumber>
     </Transfer>
 </Response>
