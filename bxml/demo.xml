@@ -25,7 +25,7 @@
         Oh my, I was wrong, that was sooo terrible.
         I will stop recording for now just in case it gets worse.
     </SpeakSentence>
-    <Pause duration="5" />
+    <Pause duration="15" />
 
     <ResumeRecording />
     <SpeakSentence voice="kate">
