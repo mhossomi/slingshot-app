@@ -1,0 +1,35 @@
+<Response>
+    <SpeakSentence voice="kate">
+        Hi, this is Kate. How can I help you?
+    </SpeakSentence>
+
+    <Record maxDuration="5"
+        transcribe="true"
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable"/>
+
+    <StartRecording 
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable"
+        transcribe="${query.transcribe:false}" />
+
+    <SpeakSentence voice="kate">
+        Mkay... You programmed this speech without any joke, so I can't really help you with that.
+        I can see Nick Ashley is in the room, could you please tell us a joke?
+        I'm sure it will be good, so I will record this.
+    </SpeakSentence>
+    <Pause duration="10" />
+
+    <PauseRecording />
+    <SpeakSentence voice="kate">
+        Oh my, I was wrong, that was sooo terrible.
+        I will stop recording for now just in case it gets worse.
+    </SpeakSentence>
+    <Pause duration="5" />
+
+    <ResumeRecording />
+    <SpeakSentence voice="kate">
+        Ok, your time is up. See you!
+    </SpeakSentence>
+    <StopRecording />
+</Response>
