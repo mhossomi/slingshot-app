@@ -15,7 +15,7 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
 
         res.send('<?xml version="1.0" ?>'
             + '<Response>'
-            + '    <PlayAudio>'
+            + `    <PlayAudio username=${config.CALL_API_USERNAME} password=${config.CALL_API_PASSWORD}>`
             + `        ${url}`
             + '   </PlayAudio>'
             + '</Response>')
