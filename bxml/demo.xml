@@ -14,7 +14,7 @@
         transcribe="true" />
 
     <SpeakSentence voice="kate">
-        Mkay... But you programmed this speech without any joke, so I can't really help you with that.
+        Well, you didn't program me to tell jokes, so I can't really help you with that.
         I can see Nick Ashley is in the room, could you please tell us a joke?
         I'm sure it will be good, so I am recording this.
     </SpeakSentence>
@@ -23,7 +23,7 @@
     <PauseRecording />
     <SpeakSentence voice="kate">
         Oh my, I was wrong, that was sooo terrible.
-        I will stop recording for now just in case it gets worse.
+        I will stop recording for now just in case.
     </SpeakSentence>
     <Pause duration="15" />
 
