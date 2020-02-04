@@ -1,35 +1,31 @@
 <Response>
+    <StartRecording 
+        transcribe="true"
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable" />
+
     <SpeakSentence voice="kate">
-        Hi, this is Kate. How can I help you?
+        Hi, my name is Kate. I'm here to say something to record so we can demo transcription.
+        Please say something funny to test the record verb too.
     </SpeakSentence>
 
-    <Record maxDuration="5"
+    <Record maxDuration="12"
         transcribe="true"
         recordingAvailableUrl="/recordingAvailable"
         transcriptionAvailableUrl="/transcriptionAvailable"/>
 
-    <StartRecording 
-        recordingAvailableUrl="/recordingAvailable"
-        transcriptionAvailableUrl="/transcriptionAvailable"
-        transcribe="true" />
-
     <SpeakSentence voice="kate">
-        Well, you didn't program me to tell jokes, so I can't really help you with that.
-        I can see Nick Ashley is in the room, could you please tell us a joke?
-        I'm sure it will be good, so I am recording this.
+        Hahaha, that was very funny!
+        I'll now pause the recording so you can chat privately.
     </SpeakSentence>
-    <Pause duration="10" />
 
     <PauseRecording />
-    <SpeakSentence voice="kate">
-        Oh my, I was wrong, that was sooo terrible.
-        I will stop recording for now just in case.
-    </SpeakSentence>
-    <Pause duration="30" />
+    <Transfer>
+        <PhoneNumber>+15552222110</PhoneNumber>
+    </Transfer>
 
-    <ResumeRecording />
     <SpeakSentence voice="kate">
-        Ok, your time is up. See you!
+        Thanks for your time. Bye!
     </SpeakSentence>
     <StopRecording />
 </Response>
