@@ -8,7 +8,7 @@
     <SpeakSentence voice="susan">
         This is a multi-channel recording. Say something, and that should be in another channel.
     </SpeakSentence>
-    <Pause duration="3"/>
+    <Pause duration="${query.duration:5}"/>
 
     <SpeakSentence voice="susan">
         And now, a single channel recording.
@@ -22,7 +22,7 @@
     <SpeakSentence voice="susan">
         Some private time.
     </SpeakSentence>
-    <Pause duration="1" />
+    <Pause duration="3" />
     <SpeakSentence voice="susan">
         Ok that's enough.
     </SpeakSentence>
