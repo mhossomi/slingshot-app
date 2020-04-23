@@ -64,7 +64,11 @@ module.exports = (name, port, configurer) => {
     process.env.HTTP_SELF = process.env.HTTP_SELF || `http://localhost:${port}`
     process.env.HTTPS_SELF = process.env.HTTPS_SELF || `http://localhost:${port}`
     configurer(express()
-        .use('/audio', express.static('audio'))
+        .use('/audio', express.static('audio', {
+            setHeaders: (res) => {
+                res.set('Cache-Control', 'max-age=30')
+            }
+        }))
         .use(bodyParser.json())
         .put('/settings', settingsHandler)
         .use('/*', loggingHandler)
