@@ -1,10 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
-    <SpeakSentence voice="susan">
-        Say something!
-    </SpeakSentence>
-    <Record maxDuration="${query.duration:5}" recordCompleteUrl="${env.HTTP_SELF}/bxml/speak?sentence=Thanks"/>
-    <SpeakSentence voice="susan">
-        Thank you!
-    </SpeakSentence>
+    <Record maxDuration="${query.duration:5}" 
+        transcribe="${query.transcribe:false}"
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable"/>
 </Response>
