@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Response>
     <PlayAudio>
-        http://192.168.113.58/${query.audio:3-minute-audio.wav}
+        ${query.audio:http://192.168.113.58/3-minute-audio.wav}
    </PlayAudio>
 </Response>

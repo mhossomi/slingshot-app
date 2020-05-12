@@ -1,7 +1,13 @@
 <?xml version="1.0" ?>
 <Response>
+    <SpeakSentence voice="susan">
+        Transferring!
+    </SpeakSentence>
     <Transfer>
-        <PhoneNumber transferAnswerUrl="/bxml/say-hello"
-            transferDisconnectUrl="/transferDisconnect">${query.to}</PhoneNumber>
+        <PhoneNumber 
+            transferAnswerUrl="/bxml/speak"
+            transferDisconnectUrl="/transferDisconnect">
+            ${query.to}
+        </PhoneNumber>
     </Transfer>
 </Response>

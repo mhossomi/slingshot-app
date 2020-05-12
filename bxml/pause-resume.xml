@@ -10,12 +10,12 @@
     <Pause duration="1" />
     <PauseRecording />
     <SpeakSentence voice="susan">
-        Now it isn't.
+        Recording is now paused.
     </SpeakSentence>
     <Pause duration="1" />
     <ResumeRecording />
     <SpeakSentence voice="susan">
-        Now it is again. Bye!
+        Recording is now resumed. Bye!
     </SpeakSentence>
     <Pause duration="1" />
     <StopRecording />
