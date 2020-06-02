@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<Response>
+    <StartRecording 
+        recordingAvailableUrl="/recordingAvailable"
+        transcriptionAvailableUrl="/transcriptionAvailable"
+        transcribe="${query.transcribe:false}" />
+    <SpeakSentence voice="susan">
+        This call is being recorded.
+    </SpeakSentence>
+    <Pause duration="1" />
+    <PauseRecording />
+    <SpeakSentence voice="susan">
+        Recording is now paused.
+    </SpeakSentence>
+    <Pause duration="1" />
+    <ResumeRecording />
+    <SpeakSentence voice="susan">
+        Recording is now resumed. Bye!
+    </SpeakSentence>
+    <Pause duration="1" />
+    <StopRecording />
+</Response>

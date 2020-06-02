@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Response>
     <SpeakSentence voice="susan">
-        You dialed ${body.digits:nothing}. Then, ${body.terminatingDigit:empty}.
+        You entered ${body.digits:nothing}, then ${body.terminatingDigit:no terminating digit}.
     </SpeakSentence>
 </Response>

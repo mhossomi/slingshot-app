@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<Response>
+    <SpeakSentence voice="susan">
+        Transferring!
+    </SpeakSentence>
+    <Transfer>
+        <Conference>${query.name:default-conference}</Conference>
+    </Transfer>
+</Response>
