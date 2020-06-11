@@ -1,3 +1,4 @@
+require('dotenv').config()
 const fetch = require('node-fetch')
 const slingshot = require('./src/slingshot')
 const meeting = require('./src/meeting')
