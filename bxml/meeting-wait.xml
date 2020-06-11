@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
 <Response>
-    <Pause duration="10"/>
+    <SpeakSentence>Joining meeting shortly</SpeakSentence>
+    <Pause duration="15"/>
 </Response>

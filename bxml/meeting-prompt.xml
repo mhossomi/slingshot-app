@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
     <SpeakSentence>Please say your name</SpeakSentence>
-    <Record maxDuration="5" 
+    <Record maxDuration="3" 
         recordCompleteUrl="/meeting/join-wait"
         recordingAvailableUrl="/meeting/join-ready"/>
 </Response>
