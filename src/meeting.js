@@ -3,9 +3,8 @@ const router = express.Router()
 const fetch = require('node-fetch')
 const fs = require('fs')
 const bxml = require('./bxml')
-const utils = require('./utils')
+const u = require('./utils')
 
-const AUTHORIZATION = 'Basic ' + Buffer.from(`${process.env.CALL_API_USERNAME}:${process.env.CALL_API_PASSWORD}`).toString('base64')
 const calls = {}
 
 router
@@ -20,23 +19,23 @@ router
     console.log(`Registered media for call ${event.callId}`)
     res.sendStatus(200)
 
-    utils.downloadAudio(event.mediaUrl, event.recordingId)
+    u.downloadAudio(event.mediaUrl, event.recordingId)
       .then(() => {
         const payload = {
           redirectMethod: 'GET',
-          redirectUrl: `${process.env.HTTP_SELF}/bxml/meeting-join`
+          redirectUrl: `${process.env.HTTPS_SELF}/bxml/meeting-join`
         }
         console.log(`Redirecting call ${event.callId}: ${payload.redirectUrl}`)
         return fetch(event.callUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': AUTHORIZATION
+            'Authorization': u.SLINGSHOT_AUTHORIZATION
           },
           body: JSON.stringify(payload)
         })
       }).then(res => {
-        if (res.status != 200) throw utils.ResponseError(res, `Error updating call ${event.callId}`)
+        if (res.status != 200) throw u.ResponseError(res, `Error updating call ${event.callId}`)
         console.log(`Updated call ${event.callId}`)
       }).catch(e => {
         if (e.res) e.res.text().then(e => console.log(`Failed to update call ${event.callId}: ${e}`))
@@ -64,8 +63,8 @@ router
 
       return res.send('<?xml version="1.0" ?>'
         + `\n<Response>`
-        + `\n    <PlayAudio>`
-        + `\n        ${process.env.HTTP_SELF}/audio/${recordingId}`
+        + `\n    <PlayAudio username="${process.env.APP_USERNAME}" password="${process.env.APP_PASSWORD}">`
+        + `\n        ${process.env.HTTPS_SELF}/audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
         + `\n        Has joined the meeting!`
@@ -81,8 +80,8 @@ router
 
       return res.send('<?xml version="1.0" ?>'
         + `\n<Response>`
-        + `\n    <PlayAudio>`
-        + `\n        ${process.env.HTTP_SELF}/audio/${recordingId}`
+        + `\n    <PlayAudio username="${process.env.APP_USERNAME}" password="${process.env.APP_PASSWORD}">`
+        + `\n        ${process.env.HTTPS_SELF}/audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
         + `\n        Has left the meeting!`

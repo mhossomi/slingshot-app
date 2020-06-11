@@ -1,7 +1,8 @@
 const fs = require('fs')
 const fetch = require('node-fetch')
 
-const AUTHORIZATION = 'Basic ' + Buffer.from(`${process.env.CALL_API_USERNAME}:${process.env.CALL_API_PASSWORD}`).toString('base64')
+const SLINGSHOT_AUTHORIZATION = 'Basic ' + Buffer.from(`${process.env.SLINGSHOT_USERNAME}:${process.env.SLINGSHOT_PASSWORD}`).toString('base64')
+console.log('Slingshot username:', process.env.SLINGSHOT_USERNAME)
 
 function ResponseError(res, message) {
   let e = new Error(message)
@@ -10,7 +11,7 @@ function ResponseError(res, message) {
 }
 
 function downloadAudio(url, name) {
-  return fetch(url, { headers: { 'Authorization': AUTHORIZATION } }).then(res => {
+  return fetch(url, { headers: { 'Authorization': SLINGSHOT_AUTHORIZATION } }).then(res => {
     if (res.status !== 200) {
       throw ResponseError(res, `Failed to download audio ${url}`)
     }
@@ -31,5 +32,6 @@ function downloadAudio(url, name) {
 
 module.exports = {
   downloadAudio,
-  ResponseError
+  ResponseError,
+  SLINGSHOT_AUTHORIZATION
 }
