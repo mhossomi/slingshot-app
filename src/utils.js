@@ -4,9 +4,11 @@ const fetch = require('node-fetch')
 process.env.SLINGSHOT_AUTH = 'Basic ' + Buffer
   .from(`${process.env.SLINGSHOT_USERNAME}:${process.env.SLINGSHOT_PASSWORD}`)
   .toString('base64')
-process.env.BXML_AUTH = process.env.APP_USERNAME
-  ? `username="${process.env.APP_USERNAME}" password="${process.env.APP_PASSWORD}"`
-  : ''
+
+if (process.env.APP_USERNAME) {
+  process.env.BXML_AUTH = `username="${process.env.APP_USERNAME}" password="${process.env.APP_PASSWORD}"`
+}
+
 console.log('Slingshot username:', process.env.SLINGSHOT_USERNAME)
 console.log('Application username:', process.env.APP_USERNAME)
 

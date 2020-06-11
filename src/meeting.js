@@ -58,8 +58,8 @@ router
 
       return bxml.send(res, '<?xml version="1.0" ?>'
         + `\n<Response>`
-        + `\n    <PlayAudio ${process.env.BXML_AUTH}>`
-        + `\n        ${process.env.SELF_URL}/audio/${recordingId}`
+        + `\n    <PlayAudio>`
+        + `\n        /audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
         + `\n        Has joined the meeting!`
@@ -76,8 +76,8 @@ router
 
       return bxml.send(res, '<?xml version="1.0" ?>'
         + `\n<Response>`
-        + `\n    <PlayAudio ${process.env.BXML_AUTH}>`
-        + `\n        ${process.env.SELF_URL}/audio/${recordingId}`
+        + `\n    <PlayAudio>`
+        + `\n        /audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
         + `\n        Has left the meeting!`

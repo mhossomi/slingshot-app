@@ -1,8 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
     <Conference 
-        conferenceEventUrl="/meeting/events"
-        ${env.BXML_AUTH:}>
+        conferenceEventUrl="/meeting/events">
         meeting
     </Conference>
 </Response>

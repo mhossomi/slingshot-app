@@ -3,6 +3,5 @@
     <SpeakSentence>Please say your name</SpeakSentence>
     <Record maxDuration="3" 
         recordCompleteUrl="/meeting/join-wait"
-        recordingAvailableUrl="/meeting/join-ready"
-        ${env.BXML_AUTH:}/>
+        recordingAvailableUrl="/meeting/join-ready"/>
 </Response>
