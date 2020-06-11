@@ -21,8 +21,7 @@ router
       }
     }).then(res => {
       if (res.status != 204) {
-        let error = await res.json()
-        throw new Error(error)
+        throw new Error(res.statusText)
       }
       console.log(`Updated call ${event.callId}`)
     }).catch(e => {
