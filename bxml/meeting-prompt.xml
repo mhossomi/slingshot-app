@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<Response>
+    <SpeakSentence>Please say your name</SpeakSentence>
+    <Record maxDuration="5" 
+        recordCompleteUrl="/join-wait"
+        recordingAvailableUrl="/join-ready"/>
+</Response>

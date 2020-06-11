@@ -23,7 +23,7 @@ function read(name) {
     return fs.readFileSync(`bxml/${name}.xml`, 'utf8')
 }
 
-function readAndSend(req, res, name) {
+function readAndSend(name, req, res) {
     try {
         const bxml = expand(read(name), req)
         res.send(bxml)
@@ -37,8 +37,9 @@ function readAndSend(req, res, name) {
 
 module.exports = {
     read,
+    readAndSend,
     write: (lines) => '<?xml version="1.0" ?><Response>'
         + lines.join('\n')
         + '</Response>',
-    handler: (req, res) => readAndSend(req, res, req.baseUrl.substring(6))
+    handler: (req, res) => readAndSend(req.baseUrl.substring(6), req, res)
 }

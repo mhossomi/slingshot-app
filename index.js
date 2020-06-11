@@ -1,7 +1,9 @@
-const slingshot = require('./src/slingshot')
 const fetch = require('node-fetch')
+const slingshot = require('./src/slingshot')
+const meeting = require('./src/meeting')
 
 slingshot('Slingshot App', process.env.PORT || 8110, app => app
+
     .use('/play-recording/accounts/:accountId/calls/:callId/recordings/:recordingId', (req, res) => {
         const accountId = req.params.accountId
         const callId = req.params.callId
@@ -16,5 +18,8 @@ slingshot('Slingshot App', process.env.PORT || 8110, app => app
             + '   </PlayAudio>'
             + '</Response>')
     })
+
+    .use('/meeting', meeting)
+
     .use((req, res) => res.sendStatus(200)))
 
