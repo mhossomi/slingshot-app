@@ -8,11 +8,28 @@ const calls = {}
 router
   .use('/join', (req, res) => bxml.readAndSend('meeting-prompt', req, res))
   .use('/join-wait', (req, res) => bxml.readAndSend('meeting-wait', req, res))
+  
   .use('/join-ready', (req, res) => {
     const event = req.body
     calls[event.callId] = event.mediaUrl
-    bxml.readAndSend('meeting-join', req, res)
+    res.sendStatus(200)
+    
+    fetch(event.callUrl, {
+      method: 'POST',
+      body: {
+        redirectUrl: `${process.env.HTTPS_SELF}/bxml/meeting-join`
+      }
+    }).then(res => {
+      if (res.status != 204) {
+        let error = await res.json()
+        throw new Error(error)
+      }
+      console.log(`Updated call ${event.callId}`)
+    }).catch(e => {
+      console.log(`Failed to update call ${event.callId}: ${e}`)
+    })
   })
+
   .use('/events', (req, res) => {
     const event = req.body
     const eventType = event.eventType
