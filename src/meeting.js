@@ -27,6 +27,7 @@ router
     if (eventType === 'conferenceMemberJoin') {
       const mediaUrl = calls[event.callId]
       if (!mediaUrl) {
+        console.log(`Media not found for ${event.callId}`)
         return res.sendStatus(400)
       }
 

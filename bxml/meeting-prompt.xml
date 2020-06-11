@@ -2,6 +2,6 @@
 <Response>
     <SpeakSentence>Please say your name</SpeakSentence>
     <Record maxDuration="5" 
-        recordCompleteUrl="/join-wait"
-        recordingAvailableUrl="/join-ready"/>
+        recordCompleteUrl="/meeting/join-wait"
+        recordingAvailableUrl="/meeting/join-ready"/>
 </Response>
