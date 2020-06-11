@@ -11,5 +11,6 @@ module.exports = {
                     return tunnel.public_url
                 }
             })
+            .catch(() => { })
     }
 }

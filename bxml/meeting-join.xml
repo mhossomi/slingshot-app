@@ -2,8 +2,7 @@
 <Response>
     <Conference 
         conferenceEventUrl="/meeting/events"
-        username="${env.APP_USERNAME}"
-        password="${env.APP_PASSWORD}">
-    meeting
+        ${env.BXML_AUTH:}>
+        meeting
     </Conference>
 </Response>

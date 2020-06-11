@@ -4,6 +4,5 @@
     <Record maxDuration="3" 
         recordCompleteUrl="/meeting/join-wait"
         recordingAvailableUrl="/meeting/join-ready"
-        username="${env.APP_USERNAME}"
-        password="${env.APP_PASSWORD}"/>
+        ${env.BXML_AUTH:}/>
 </Response>

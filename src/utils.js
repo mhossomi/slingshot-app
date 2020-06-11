@@ -1,15 +1,19 @@
 const fs = require('fs')
 const fetch = require('node-fetch')
 
-process.env.SLINGSHOT_AUTHORIZATION = 'Basic ' + Buffer
+process.env.SLINGSHOT_AUTH = 'Basic ' + Buffer
   .from(`${process.env.SLINGSHOT_USERNAME}:${process.env.SLINGSHOT_PASSWORD}`)
   .toString('base64')
+process.env.BXML_AUTH = process.env.APP_USERNAME
+  ? `username="${process.env.APP_USERNAME}" password="${process.env.APP_PASSWORD}"`
+  : ''
 console.log('Slingshot username:', process.env.SLINGSHOT_USERNAME)
+console.log('Application username:', process.env.APP_USERNAME)
 
 function downloadAudio(url, name) {
   return fetch(url, {
     headers: {
-      'Authorization': process.env.SLINGSHOT_AUTHORIZATION
+      'Authorization': process.env.SLINGSHOT_AUTH
     }
   }).then(res => {
     if (res.status !== 200) {
