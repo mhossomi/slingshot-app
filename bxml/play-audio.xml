@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <Response>
     <PlayAudio>
-        ${env.HTTPS_SELF}/audio/${query.audio:5sec-g711.wav}
+        ${env.SELF_URL}/audio/${query.audio:5sec-g711.wav}
    </PlayAudio>
 </Response>

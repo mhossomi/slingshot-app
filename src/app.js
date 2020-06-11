@@ -12,13 +12,14 @@ var settings = {
     pretty: true
 }
 
-// Register ngrok or Heroku urls if detected
-ngrok.getPublicUrls()
-    .then(urls => urls || heroku.getPublicUrls())
-    .then(urls => urls || [])
-    .then(urls => {
-        console.log(`Found ${urls.length} URLs!`)
-        urls.forEach(tunnel => process.env[`${tunnel.proto.toUpperCase()}_SELF`] = tunnel.public_url)
+// Register ngrok or Heroku url if detected
+ngrok.getPublicUrl()
+    .then(url => url || heroku.getPublicUrl())
+    .then(url => {
+        if (url) {
+            console.log(`Self URL: ${url}`)
+            process.env.SELF_URL = url
+        }
     })
 
 // ==================================================
@@ -61,8 +62,7 @@ function loggingHandler(req, res, next) {
 // ==================================================
 
 module.exports = (name, port, configurer) => {
-    process.env.HTTP_SELF = process.env.HTTP_SELF || `http://localhost:${port}`
-    process.env.HTTPS_SELF = process.env.HTTPS_SELF || `http://localhost:${port}`
+    process.env.SELF_URL = process.env.SELF_URL || `https://localhost:${port}`
     configurer(express()
         .use('/audio', express.static('audio', {
             setHeaders: (res) => {

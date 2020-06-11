@@ -19,15 +19,17 @@ function expand(bxml, req) {
     })
 }
 
+function obfuscate(bxml) {
+    return bxml.replace(/([Pp]assword\w*?)=".*?"/g, (match, prefix) => `${prefix}="***"`)
+}
+
 function read(name) {
     return fs.readFileSync(`bxml/${name}.xml`, 'utf8')
 }
 
 function readAndSend(name, req, res) {
     try {
-        const bxml = expand(read(name), req)
-        res.send(bxml)
-        console.log(`Replied with:\n${bxml}`)
+        send(res, expand(read(name), req))
     } catch (e) {
         res.sendStatus(404)
         console.log(e)
@@ -35,11 +37,14 @@ function readAndSend(name, req, res) {
     }
 }
 
+function send(res, bxml) {
+    res.send(bxml)
+    console.log(`\n${obfuscate(bxml)}`)
+}
+
 module.exports = {
     read,
     readAndSend,
-    write: (lines) => '<?xml version="1.0" ?><Response>'
-        + lines.join('\n')
-        + '</Response>',
+    send,
     handler: (req, res) => readAndSend(req.baseUrl.substring(6), req, res)
 }
