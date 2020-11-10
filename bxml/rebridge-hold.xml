@@ -1,0 +1,6 @@
+<Response>
+    <StopGather/>
+    <Gather gatherUrl="/rebridge/connect" maxDigits="1" firstDigitTimeout="10" repeatCount="3">
+        <SpeakSentence voice="julie">Call is now on hold. To return to the call, please press 1. To transfer the call, please press 2.</SpeakSentence>
+    </Gather>
+</Response>

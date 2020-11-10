@@ -2,6 +2,7 @@ require('dotenv').config()
 const fetch = require('node-fetch')
 const app = require('./src/app')
 const meeting = require('./src/meeting')
+const rebridge = require('./src/rebridge')
 
 app('Slingshot App', process.env.PORT || 8110, app => app
 
@@ -21,6 +22,12 @@ app('Slingshot App', process.env.PORT || 8110, app => app
     })
 
     .use('/meeting', meeting)
+
+    .use('/rebridge', rebridge)
+
+    .use('/error', (req, res) => res.sendStatus(500))
+
+    .use('/timeout', (req, res) => {})
 
     .use((req, res) => res.sendStatus(200)))
 

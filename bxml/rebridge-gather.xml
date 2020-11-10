@@ -1,0 +1,5 @@
+<Response>
+    <Gather gatherUrl="/rebridge/bridge" maxDigits="1">
+        <SpeakSentence voice="susan">Gathering digits</SpeakSentence>
+    </Gather>
+</Response>

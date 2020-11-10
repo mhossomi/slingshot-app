@@ -1,0 +1,7 @@
+<Response>
+    <Gather gatherUrl="/rebridge/connect" maxDigits="1" firstDigitTimeout="10" repeatCount="3">
+        <SpeakSentence voice="julie">
+            You have an incoming call from test test . When you're ready, please press any digit to connect.
+        </SpeakSentence>
+    </Gather>
+</Response>

@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<Response>
+    <Pause duration="${query.duration:10}"/>
+</Response>

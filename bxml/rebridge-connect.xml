@@ -1,0 +1,6 @@
+<Response>
+    <StopGather/>
+    <StartGather dtmfUrl="/rebridge/dtmf"/>
+    <SpeakSentence voice="julie">Connected</SpeakSentence>
+    <Redirect redirectUrl="/rebridge/connected"/>
+</Response>

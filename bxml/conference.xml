@@ -3,5 +3,5 @@
     <SpeakSentence voice="susan">
         Joining!
     </SpeakSentence>
-    <Conference>${query.name:default-conference}</Conference>
+    <Conference conferenceEventUrl="/error">${query.name:default-conference}</Conference>
 </Response>

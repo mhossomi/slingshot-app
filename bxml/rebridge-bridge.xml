@@ -1,0 +1,3 @@
+<Response>
+    <Bridge bridgeCompleteUrl="/bxml/empty" bridgeTargetCompleteUrl="/bxml/pause">${query.target}</Bridge>
+</Response>

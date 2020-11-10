@@ -43,9 +43,10 @@ router
     if (eventType === 'conferenceCreated') {
       return bxml.send(res, '<?xml version="1.0" ?>'
         + `\n<Response>`
+        + `\n    <StartRecording recordingAvailableUrl="/recordingAvailable" fileFormat="mp3" transcribe="true"/>`
         + `\n    <SpeakSentence>`
-        + `\n        This meeting has just started!`
-        + `\n   </SpeakSentence>`
+        + `\n        This meeting is being recorded!`
+        + `\n    </SpeakSentence>`
         + `\n</Response>\n`)
     }
 
@@ -58,12 +59,13 @@ router
 
       return bxml.send(res, '<?xml version="1.0" ?>'
         + `\n<Response>`
+        + `\n    <ResumeRecording/>`
         + `\n    <PlayAudio>`
         + `\n        /audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
         + `\n        Has joined the meeting!`
-        + `\n   </SpeakSentence>`
+        + `\n    </SpeakSentence>`
         + `\n</Response>\n`)
     }
 
@@ -80,9 +82,14 @@ router
         + `\n        /audio/${recordingId}`
         + `\n    </PlayAudio>`
         + `\n    <SpeakSentence>`
-        + `\n        Has left the meeting!`
-        + `\n   </SpeakSentence>`
+        + `\n        Has left the meeting! Let's wait for him.`
+        + `\n    </SpeakSentence>`
+        + `\n    <PauseRecording/>`
         + `\n</Response>\n`)
+    }
+
+    if (eventType === 'conferenceCompleted') {
+      return res.sendStatus(200)
     }
 
     return res.sendStatus(400)

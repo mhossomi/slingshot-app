@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <Response>
     <Record maxDuration="${query.duration:5}" 
+        recordCompleteUrl="/bxml/hangup"
         transcribe="${query.transcribe:false}"
         recordingAvailableUrl="/recordingAvailable"
         transcriptionAvailableUrl="/transcriptionAvailable"/>

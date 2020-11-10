@@ -37,6 +37,22 @@ function downloadAudio(url, name) {
   })
 }
 
+function redirectCall(callUrl, redirectUrl) {
+  let callId = callUrl.substr(callUrl.lastIndexOf('/') + 1)
+  return fetch(callUrl,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.SLINGSHOT_AUTH
+      },
+      body: JSON.stringify({ redirectUrl })
+    })
+    .then(() => console.log(`Redirected call ${callId} to ${redirectUrl}`))
+    .catch(e => console.log(`Failed to redirect call ${callId}`, e))
+}
+
 module.exports = {
-  downloadAudio
+  downloadAudio,
+  redirectCall
 }

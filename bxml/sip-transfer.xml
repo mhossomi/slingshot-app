@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Response>
+    <StartRecording recordingAvailableUrl="/recording"/>
+    <SpeakSentence voice="susan">
+        Transfering now!
+    </SpeakSentence>
+    <Transfer>
+        <SipUri uui="${query.uui}" transferAnswerUrl="/bxml/empty">sip:${query.to}</SipUri>
+    </Transfer>
+</Response>

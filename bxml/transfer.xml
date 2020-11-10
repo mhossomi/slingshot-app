@@ -3,9 +3,11 @@
     <SpeakSentence voice="susan">
         Transferring!
     </SpeakSentence>
-    <Transfer>
+    <Transfer
+        transferCompleteUrl="/bxml/hangup">
         <PhoneNumber 
             transferAnswerUrl="/bxml/speak"
+            transferAnswerMethod="GET"
             transferDisconnectUrl="/transferDisconnect">
             ${query.to}
         </PhoneNumber>

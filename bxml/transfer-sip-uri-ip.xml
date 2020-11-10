@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Response>
+    <SpeakSentence voice="susan">
+        Transfering to SIP URI with IP!
+    </SpeakSentence>
+    <Transfer>
+        <SipUri transferDisconnectUrl="/transferDisconnect" transferAnswerUrl="/bxml/empty">
+          sip:mhossomi@10.23.27.236
+        </SipUri>
+    </Transfer>
+</Response>

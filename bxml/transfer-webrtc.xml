@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Response>
+    <SpeakSentence voice="susan">
+        Transfering to WebRTC!
+    </SpeakSentence>
+    <Transfer>
+        <SipUri transferDisconnectUrl="/transferDisconnect">
+          sip:mhossomi@webrtc.sipp.censer.voice.lab.usea1.bwnet.us
+        </SipUri>
+    </Transfer>
+</Response>
